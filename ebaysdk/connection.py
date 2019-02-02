@@ -70,7 +70,7 @@ class BaseConnection(object):
 
         self.parallel = parallel
 
-        self.base_list_nodes = []fS
+        self.base_list_nodes = []
         self.datetime_nodes = []
 
         self._reset()
