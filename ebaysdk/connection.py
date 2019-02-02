@@ -13,8 +13,10 @@ import time
 import uuid
 import webbrowser
 
-from requests import Request, Session
+from requests import Request
 from requests.adapters import HTTPAdapter
+
+from requests_futures.sessions import FuturesSession
 
 from xml.dom.minidom import parseString
 from xml.parsers.expat import ExpatError
@@ -62,13 +64,13 @@ class BaseConnection(object):
                 'https': proxy
             }
 
-        self.session = Session()
+        self.session = FuturesSession()
         self.session.mount('http://', HTTPAdapter(max_retries=3))
         self.session.mount('https://', HTTPAdapter(max_retries=3))
 
         self.parallel = parallel
 
-        self.base_list_nodes = []
+        self.base_list_nodes = []fS
         self.datetime_nodes = []
 
         self._reset()
